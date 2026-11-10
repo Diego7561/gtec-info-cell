@@ -196,17 +196,21 @@ body {
 }
 
 .mobile-toggle {
-    display: none;
+    display: none;                 /* o media query muda para flex */
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    margin: 0;
+    padding: 0;                    /* importante: zera o padding do CSS de avaliações */
     background: none;
     border: 2px solid transparent;
     border-radius: 8px;
+    box-shadow: none;
     color: var(--text-white);
-    font-size: 1.8rem;
-    width: 46px;
-    height: 46px;
+    font-size: 1.6rem;
+    line-height: 1;
     cursor: pointer;
-    transition: all 0.3s ease;
-    -webkit-tap-highlight-color: transparent; /* tira o flash cinza do toque no celular */
 }
 
 /* efeito enquanto o dedo está pressionando */
@@ -523,27 +527,66 @@ body {
     }
 
     .mobile-toggle {
-        display: block;
+        display: flex;
     }
 }
 
-.carrossel{
+/* Hero precisa ser referência para o fundo */
+.hero {
     position: relative;
-    max-width: 25%;
-    margin: auto;
+    overflow: hidden;
+}
+
+/* Carrossel vira plano de fundo */
+.carrossel {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
     overflow: hidden;
 }
 
 .slides {
-  display: flex;
-  transition: transform 0.2s ease;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
+
 .slide {
-  min-width: 100%;        
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
 }
+
+.slide.active {
+    opacity: 0.5;          /* <<< transparência: 0 (some) a 1 (total) */
+}
+
 .slide img {
-  width: 100%;
-  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     /* preenche tudo sem distorcer */
+    display: block;
+}
+
+/* Camada escura para o texto ficar legível */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(15,17,21,0.55), rgba(15,17,21,0.85));
+    z-index: 1;
+}
+
+/* Conteúdo por cima de tudo */
+.hero-container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Corrige botões cortados no celular */
+.hero-btns {
+    flex-wrap: wrap;
 }
 
 :root{--bg:#05070d;--card:#0c1220;--txt:#e8eefc;--mut:#8a97b5;--blue:#1e90ff;--star:#ffd21f;--line:#1a2742
@@ -658,3 +701,7 @@ body {
     color:#ff6b6b
   }
   
+  .logo {
+    text-decoration: none;
+    cursor: pointer;
+}
