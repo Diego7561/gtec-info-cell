@@ -35,17 +35,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
  
-    /* ---------- CARROSSEL AUTOMÁTICO ---------- */
-    const slides = document.querySelector('.carrossel .slides');
-    const total = document.querySelectorAll('.carrossel .slide').length;
- 
-    if (slides && total > 1) {
-        let atual = 0;
- 
-        setInterval(() => {
-            atual = (atual + 1) % total;
-            slides.style.transform = `translateX(-${atual * 100}%)`;
-        }, 3000); // troca a cada 3 segundos (valor em milissegundos)
-    }
+  const slides = document.querySelectorAll('.carrossel .slide');
+let atual = 0;
+
+if (slides.length > 0) {
+    slides[0].classList.add('active');
+
+    setInterval(() => {
+        slides[atual].classList.remove('active');
+        atual = (atual + 1) % slides.length;
+        slides[atual].classList.add('active');
+    }, 5000); // troca a cada 5 segundos
+}
 });
  
