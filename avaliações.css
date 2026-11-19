@@ -1,0 +1,213 @@
+/* --- BASE DA PÁGINA --- */
+:root {
+    --bg-main: #05070d;
+    --bg-dark: #0c1220;
+    --text-white: #e8eefc;
+    --text-gray: #8a97b5;
+    --border-color: #1a2742;
+    --primary-blue: #1e90ff;
+    --cyan-accent: #00d4ff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg-main);
+    color: var(--text-white);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* --- AVALIAÇÕES --- */
+#avaliacoes {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 48px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#avaliacoes h2 {
+    order: 0;
+    text-align: center;
+    font-size: clamp(24px, 4vw, 34px);
+    margin: 0 0 8px;
+    text-transform: uppercase;
+    color: var(--text-white);
+}
+
+#avaliacoes h2 span {
+    color: var(--primary-blue);
+    text-shadow: 0 0 14px rgba(30, 144, 255, 0.7);
+}
+
+#avaliacoes .sub {
+    order: 1;
+    text-align: center;
+    color: var(--text-gray, #8a97b5);
+    margin: 0 0 32px;
+}
+
+/* --- FORMULÁRIO (primeiro) --- */
+#avaliacoes form {
+    order: 2;
+    width: 100%;
+    background: var(--bg-dark);
+    border: 1px solid var(--primary-blue);
+    box-shadow: 0 0 22px rgba(30, 144, 255, 0.25);
+    border-radius: 14px;
+    padding: 22px;
+    margin: 0;
+}
+
+#avaliacoes form h3 {
+    margin: 0 0 14px;
+    text-align: center;
+    color: var(--text-white);
+}
+
+#avaliacoes label {
+    display: block;
+    font-size: 14px;
+    color: var(--text-gray, #8a97b5);
+    margin: 12px 0 6px;
+}
+
+#avaliacoes input[type=text],
+#avaliacoes textarea {
+    width: 100%;
+    background: #070b15;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-white);
+    padding: 11px;
+    font: inherit;
+}
+
+#avaliacoes input:focus,
+#avaliacoes textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+}
+
+#avaliacoes textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* --- ESTRELAS --- */
+#avaliacoes .stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 8px;
+    font-size: 38px;
+}
+
+#avaliacoes .stars input {
+    display: none;
+}
+
+#avaliacoes .stars label {
+    margin: 0;
+    cursor: pointer;
+    color: #2a3654;
+    transition: color 0.15s;
+}
+
+#avaliacoes .stars input:checked ~ label,
+#avaliacoes .stars label:hover,
+#avaliacoes .stars label:hover ~ label {
+    color: #ffd21f;
+}
+
+/* --- CAMPO ANTI-SPAM (escondido) --- */
+#avaliacoes .hp {
+    position: absolute;
+    left: -9999px;
+}
+
+/* --- BOTÃO E MENSAGENS --- */
+#avaliacoes button {
+    width: 100%;
+    margin-top: 18px;
+    padding: 13px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--primary-blue);
+    color: var(--text-white);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 16px rgba(30, 144, 255, 0.6);
+}
+
+#avaliacoes button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+#avaliacoes .msg {
+    text-align: center;
+    margin-top: 14px;
+    min-height: 20px;
+}
+
+#avaliacoes .ok {
+    color: #4ade80;
+}
+
+#avaliacoes .erro {
+    color: #ff6b6b;
+}
+
+/* --- LISTA DE AVALIAÇÕES (embaixo, uma abaixo da outra) --- */
+#avaliacoes .titulo-lista {
+    order: 3;
+    text-align: center;
+    font-size: 20px;
+    margin: 48px 0 0;
+    color: var(--text-white);
+}
+
+#avaliacoes .lista {
+    order: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 20px 0 0;
+}
+
+#avaliacoes .card {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+    width: 100%;
+}
+
+#avaliacoes .card .nome {
+    font-weight: bold;
+    color: var(--text-white);
+}
+
+#avaliacoes .card .estrelas {
+    color: #ffd21f;
+    letter-spacing: 2px;
+    margin: 6px 0;
+}
+
+#avaliacoes .card p {
+    margin: 0;
+    color: #cfd8ee;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+#avaliacoes .vazio {
+    text-align: center;
+    color: var(--text-gray, #8a97b5);
+}

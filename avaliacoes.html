@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="./avaliações.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avaliações | GTEC Info Cell</title>
+<link rel="icon" type="image/png" href="img/logo.jpeg">
+</head>
+<body>
+
+<!-- ===== COLE DAQUI ATÉ O FIM DO </section> NO SEU SITE (junto com o <style> e o <script>) ===== -->
+<section id="avaliacoes">
+  <h2>O que dizem nossos <span>clientes</span></h2>
+  <p class="sub">Sua opinião ajuda a GTEC a melhorar a cada atendimento.</p>
+
+  <h3 class="titulo-lista">Veja o que outros clientes disseram</h3>
+  <div class="lista" id="lista"><p class="vazio">Carregando avaliações…</p></div>
+
+  <form id="form" novalidate>
+    <h3>Avalie nosso serviço</h3>
+    <div class="stars" role="radiogroup" aria-label="Nota de 1 a 5">
+      <input type="radio" name="nota" id="s5" value="5"><label for="s5" title="5 estrelas">★</label>
+      <input type="radio" name="nota" id="s4" value="4"><label for="s4" title="4 estrelas">★</label>
+      <input type="radio" name="nota" id="s3" value="3"><label for="s3" title="3 estrelas">★</label>
+      <input type="radio" name="nota" id="s2" value="2"><label for="s2" title="2 estrelas">★</label>
+      <input type="radio" name="nota" id="s1" value="1"><label for="s1" title="1 estrela">★</label>
+    </div>
+
+    <label for="nome">Seu nome</label>
+    <input type="text" id="nome" maxlength="60" placeholder="Ex.: Kevin Miguel" required>
+
+    <label for="comentario">Gostou do serviço? Conte para nós</label>
+    <textarea id="comentario" maxlength="500" placeholder="Como foi seu atendimento, o prazo e o resultado do conserto?" required></textarea>
+
+    <input class="hp" type="text" id="site" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button type="submit" id="btn">Enviar avaliação</button>
+    <div class="msg" id="msg" role="status"></div>
+  </form>
+</section>
+<script src="avaliaçoes.js"></script>
+</body>
+</html>
