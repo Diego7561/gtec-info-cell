@@ -574,38 +574,6 @@ body {
     overflow: hidden;
 }
 
-/* Carrossel vira plano de fundo */
-.carrossel {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-}
-
-.slides {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 1.2s ease-in-out;
-}
-
-.slide.active {
-    opacity: 0.5;          /* <<< transparência: 0 (some) a 1 (total) */
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;     /* preenche tudo sem distorcer */
-    display: block;
-}
-
 /* Camada escura para o texto ficar legível */
 .hero::after {
     content: "";
@@ -741,4 +709,92 @@ body {
   .logo {
     text-decoration: none;
     cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .hero {
+        display: block;
+        min-height: 0;
+        padding: 0 0 40px;
+    }
+    .carrossel {
+        position: relative;
+        aspect-ratio: 16 / 9;   /* use a proporção real da sua imagem */
+    }
+    .hero::after { display: none; }
+    .hero-container { padding-top: 30px; }
+}
+
+/* ===== HERO + CARROSSEL (versão final) ===== */
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    aspect-ratio: auto;
+    padding: 100px 0 80px;
+    height: calc(100vh - 88px);   /* tela menos o cabeçalho */
+    min-height: 560px;
+}
+
+.hero .carrossel {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    aspect-ratio: auto;
+    overflow: hidden;
+}
+
+.hero .slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.hero .slide.active {
+    opacity: 0.5;
+}
+
+.hero .slide picture,
+.hero .slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.hero .slide img {
+    object-fit: cover;
+    object-position: center;
+}
+
+/* camada escura para o texto ficar legível */
+.hero::after {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(15,17,21,0.55), rgba(15,17,21,0.85));
+}
+
+.hero .hero-container {
+    position: relative;
+    z-index: 2;
+}
+
+/* CELULAR */
+@media (max-width: 900px) {
+    .hero {
+        height: auto;
+        min-height: 100svh;
+        padding: 100px 0 60px;
+    }
 }
